@@ -5,7 +5,7 @@
       "document": "datasets/dna/zebrafish.faa",
       "outputs": "datasets/dna/outputs"
     },
-    "morphemes": {
+    "literature": {
       "queries": "datasets/literature/queries/lookahead/sample",
       "document": "datasets/literature/english-authors.txt",
       "outputs": "datasets/literature/outputs"
@@ -16,10 +16,12 @@
       "outputs": "datasets/sparql/outputs"
     }
   },
-  "REmatchData": {
-    "command": "rematch_matches",
-    "args": "{document} {regex}",
-    "rgx_type": "rematch"
-  },
-  "summaryDirectory": "exp/correctness"
+  "correctnessOutputDirectory": "exp/correctness",
+  "performanceOutputDirectory": "exp/performance",
+  "experimentsToRun": [
+    "dna",
+    "literature",
+    "sparql"
+  ],
+  "timeoutInSeconds": 600
 }
