@@ -8,10 +8,10 @@ import matplotlib.pyplot as plt
 HERE = "/home/gustavo/Documents/REmatch-datasets/"
 
 with open(
-    os.path.join(HERE, "scripts", "config", "test_correctness-config.json"),
+    os.path.join(HERE, "scripts", "config", "test-config.json"),
     encoding="utf-8",
-) as jsonFile:
-    EXPERIMENT_CONFIG = json.load(jsonFile)
+) as file:
+    EXPERIMENT_CONFIG = json.load(file)
 
 CHOSEN_EXPERIMENTS = EXPERIMENT_CONFIG["experimentsToRun"]
 

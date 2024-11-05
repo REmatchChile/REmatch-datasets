@@ -6,10 +6,10 @@ import pyrematch as REmatch
 HERE = "/home/gustavo/Documents/REmatch-datasets/"
 
 with open(
-    os.path.join(HERE, "scripts", "config", "test_correctness-config.json"),
+    os.path.join(HERE, "scripts", "config", "test-config.json"),
     encoding="utf-8",
-) as jsonFile:
-    EXPERIMENT_CONFIG = json.load(jsonFile)
+) as file:
+    EXPERIMENT_CONFIG = json.load(file)
 
 CHOSEN_EXPERIMENTS = EXPERIMENT_CONFIG["experimentsToRun"]
 
@@ -75,7 +75,9 @@ def check_if_outputs_are_correct(regex_path, expected_outputs_path):
     with open(expected_outputs_path, "r", encoding="utf-8") as expected_outputs_file:
         expected_outputs = [line.strip() for line in expected_outputs_file.readlines()]
 
-    query = REmatch.reql(pattern, max_deterministic_states=100000, max_mempool_duplications=10)
+    query = REmatch.reql(
+        pattern, max_deterministic_states=100000, max_mempool_duplications=10
+    )
     matches = query.findall(document)
 
     expected_outputs = sorted(expected_outputs)
@@ -141,11 +143,8 @@ def run_experiments():
                     output_file.write(
                         f'{dataset}-{experiment},"{get_regex(regex_path)}",timeout\n'
                     )
-                break
-            break
 
         output_file.close()
-        break
 
 
 if __name__ == "__main__":
