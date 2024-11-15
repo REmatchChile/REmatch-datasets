@@ -1,11 +1,12 @@
 import os
 import json
+import pathlib
 import time
 from datetime import datetime
 import subprocess
 import matplotlib.pyplot as plt
 
-HERE = "/home/gustavo/Documents/REmatch-datasets/"
+HERE = pathlib.Path().resolve()
 
 with open(
     os.path.join(HERE, "scripts", "config", "test-config.json"),

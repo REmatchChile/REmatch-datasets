@@ -2,11 +2,12 @@ import os
 import json
 from datetime import datetime
 import pyrematch as REmatch
+import pathlib
 
-HERE = "/home/gustavo/Documents/REmatch-datasets/"
+HERE = pathlib.Path().resolve()
 
 with open(
-    os.path.join(HERE, "scripts", "config", "test-config.json"),
+    os.path.join(HERE, "scripts", "config", "test_config.json"),
     encoding="utf-8",
 ) as file:
     EXPERIMENT_CONFIG = json.load(file)
@@ -95,7 +96,7 @@ def run_experiments():
     global document
 
     for suite in CHOSEN_EXPERIMENTS:
-        print(f"\tOn dataset: {suite}\n")
+        print(f"\n\tOn dataset: {suite}\n")
 
         timestamp = datetime.now().strftime("%Y-%m-%d_%H:%M:%S")
 
