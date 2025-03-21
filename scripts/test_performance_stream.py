@@ -33,7 +33,7 @@ def get_regex(rgx_path):
 def execute_query(regex_path, document_path):
     initial_time = time.perf_counter()
 
-    command_list = ["build/test-performance", regex_path, document_path]
+    command_list = ["build/test-performance-stream", regex_path, document_path]
 
     try:
         subprocess.run(
@@ -63,7 +63,10 @@ def run_experiments():
         queries_path = os.path.join(HERE, experiment_paths["queries"])
         document_path = os.path.join(HERE, experiment_paths["document"])
         results_path = os.path.join(
-            HERE, EXPERIMENT_CONFIG["performanceOutputDirectory"], suite, timestamp
+            HERE,
+            EXPERIMENT_CONFIG["performanceOutputDirectory"] + "-stream",
+            suite,
+            timestamp,
         )
 
         os.makedirs(results_path, exist_ok=True)

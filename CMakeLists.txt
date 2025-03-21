@@ -5,5 +5,15 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 find_package(REmatch REQUIRED)
 
-add_executable(test-performance cpp/test-performance.cpp)
-target_link_libraries(test-performance REmatch::REmatch)
+set(CMAKE_CXX_FLAGS "-O3 -g0")
+
+set(
+    TESTS
+    test-performance
+    test-performance-stream
+)
+
+foreach(test ${TESTS})
+    add_executable(${test} cpp/${test}.cpp)
+    target_link_libraries(${test} REmatch::REmatch)
+endforeach()
